@@ -1,0 +1,27 @@
+{
+  "name": "Bot_Sentry_Panel",
+  "version": "1.0.0",
+  "description": "Source-code of the entire Bot-Sentry panel",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/New-Era-Studios/Bot-Sentry-Panel.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/New-Era-Studios/Bot-Sentry-Panel/issues"
+  },
+  "homepage": "https://github.com/New-Era-Studios/Bot-Sentry-Panel#readme",
+  "devDependencies": {
+    "electron": "^11.2.0"
+  },
+  "dependencies": {
+    "electron-reload": "^1.5.0"
+  }
+}
