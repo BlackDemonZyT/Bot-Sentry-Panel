@@ -22,6 +22,7 @@
     "electron": "^11.2.0"
   },
   "dependencies": {
+    "axios": "^0.21.1",
     "electron-reload": "^1.5.0"
   }
 }
