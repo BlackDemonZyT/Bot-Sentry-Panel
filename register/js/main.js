@@ -4,30 +4,11 @@ const axios = require('axios').default;
 var statusText = document.getElementById("statusText");
 var username = document.getElementById("username");
 var password = document.getElementById("password");
-var noSpam = 0;
-setInterval(function(){ noSpam = 0; }, 1500);
 
 // Panel JavaScript
 function TryToLogin()
 {
     statusText.textContent = "We are checking your credentials...";
-
-    // Anti login button spam (client-sided) (move to php-sessions serverside if some stupid tries to flood)
-    if(noSpam == 1)
-    {
-        statusText.textContent = "Please don't flood the login button, bandwidth is not free.";
-        return;
-    }
-
-    // We check if both fields have been filled with 3 or more chars
-    if(username.value.length == 0) { statusText.textContent = "You must specify an username"; return; }
-    if(password.value.length == 0) { statusText.textContent = "You must specify a password"; return; }
-    if(username.value.length < 4) { statusText.textContent = "Username field must contain more than 3 characters"; return; }
-    if(password.value.length < 4) { statusText.textContent = "Password field must contain more than 3 characters"; return; }
-    if(username.value.length > 14) { statusText.textContent = "Username field must contain less than 14 characters"; return; }
-    if(password.value.length > 25) { statusText.textContent = "Password field must contain less than 25 characters"; return; }
-
-    noSpam = 1;
 
     const Url = 'https://cyberdevelopment.es/BotSentry/panel/loginUser.php';
     var http = new XMLHttpRequest();

@@ -1,4 +1,3 @@
-alert("test");
 // Method that will take the user to the login page
 function MoveToLogin()
 {
