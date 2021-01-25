@@ -1,15 +1,21 @@
 const { app, BrowserWindow } = require('electron')
+const express = require('express');
+const server = express();
+
 
 function createWindow () {
   const win = new BrowserWindow({
     width: 800,
     height: 600,
+    icon: __dirname + '/icon.ico',
     //frame: false,
     webPreferences: {
       nodeIntegration: true
     }
   })
 
+  server.use('/', express.static(__dirname));
+  const infos = server.listen(0, 'localhost', () => win.loadURL(`http://localhost:${infos.address().port}/start/index.html`));
   win.loadFile('start/index.html')
 }
 
