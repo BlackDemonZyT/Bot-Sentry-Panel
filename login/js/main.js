@@ -80,11 +80,19 @@ function ProcessGoodLoginResponse(response)
     else if(response == "correct")
     {
         status.textContent = "Introduced credentials are correct, redirecting to dashboard...";
+<<<<<<< HEAD
         window.location.href = "../dashboard/html/index.html";
+=======
+        window.location.href = "../dashboard/index.html";
+>>>>>>> 69d7cecc49c97439171e2a2a8a05795e2d3e5ccd
     }
     else if(response.includes("sent_email_"))
     {
         storage.setItem('email', response.replace("sent_email_", ""));
+<<<<<<< HEAD
+=======
+        alert(response.replace("sent_email_", ""));
+>>>>>>> 69d7cecc49c97439171e2a2a8a05795e2d3e5ccd
         window.location.href = "../account_verify/index.html";
     }
 }
