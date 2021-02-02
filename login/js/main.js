@@ -1,4 +1,6 @@
-const axios = require('axios').default;
+// Support for LocalStorage when running on Express server
+var LocalStorage = require('node-localstorage').LocalStorage;
+storage = new LocalStorage('./scratch');
 
 // Store DOM elements into variables
 var statusText = document.getElementById("statusText");
@@ -6,6 +8,16 @@ var username = document.getElementById("username");
 var password = document.getElementById("password");
 var noSpam = 0;
 setInterval(function(){ noSpam = 0; }, 1500);
+
+// We check if the user already has an username and password in the localstorage, and we fill the gaps with them
+if(storage.getItem('username').length > 0)
+{
+    username.value = storage.getItem('username');
+}
+if(storage.getItem('password').length > 0)
+{
+    password.value = storage.getItem('password');
+}
 
 // Panel JavaScript
 function TryToLogin()
@@ -24,8 +36,8 @@ function TryToLogin()
     if(password.value.length == 0) { statusText.textContent = "You must specify a password"; return; }
     if(username.value.length < 4) { statusText.textContent = "Username field must contain more than 3 characters"; return; }
     if(password.value.length < 4) { statusText.textContent = "Password field must contain more than 3 characters"; return; }
-    if(username.value.length > 14) { statusText.textContent = "Username field must contain less than 14 characters"; return; }
-    if(password.value.length > 25) { statusText.textContent = "Password field must contain less than 25 characters"; return; }
+    if(username.value.length > 15) { statusText.textContent = "Username field must contain less than 16 characters"; return; }
+    if(password.value.length > 50) { statusText.textContent = "Password field must contain less than 51 characters"; return; }
 
     noSpam = 1;
 
@@ -68,6 +80,12 @@ function ProcessGoodLoginResponse(response)
     else if(response == "correct")
     {
         status.textContent = "Introduced credentials are correct, redirecting to dashboard...";
+        window.location.href = "../dashboard/html/index.html";
+    }
+    else if(response.includes("sent_email_"))
+    {
+        storage.setItem('email', response.replace("sent_email_", ""));
+        window.location.href = "../account_verify/index.html";
     }
 }
 

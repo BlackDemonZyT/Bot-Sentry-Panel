@@ -19,8 +19,9 @@
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
-<!--===============================================================================================-->
-	
+	<!--===============================================================================================-->
+	<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+
 </head>
 <body>
 	
@@ -37,22 +38,39 @@
 					</span>
 
 					<div class="wrap-input100">
-						<input class="input100" id="username" type="text" name="email" placeholder="Username">
+						<input class="input100" id="username" type="text" name="email" maxlength="20" placeholder="Username">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-user" aria-hidden="true"></i>
 						</span>
 					</div>
 
+					<div class="wrap-input100">
+						<input class="input100" id="email" type="text" name="email" maxlength="40" placeholder="Email">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
 					<div class="wrap-input100 validate-input">
-						<input class="input100" id="password" type="password" name="pass" placeholder="Password">
+						<input class="input100" id="password" type="password" name="pass" maxlength="50" placeholder="Password">
 						<span class="focus-input100"></span>
 						<span class="symbol-input100">
 							<i class="fa fa-lock" aria-hidden="true"></i>
 						</span>
 					</div>
 
+					<div class="wrap-input100 validate-input">
+						<input class="input100" id="repeatpassword" type="password" name="pass" maxlength="50" placeholder="Repeat Password">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
 
+					<br/>
+					<div class="wrap-input100 g-recaptcha" data-theme="dark" data-sitekey="6LeAwToaAAAAAO51Rr73mnXS80p2WemmTqWP0Hbb"></div>
 
 					<div class="text-center p-t-12">
 						<span id="statusText" class="txt1">
@@ -61,8 +79,8 @@
 					</div>
 					
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" onclick="TryToLogin()">
-							Login
+						<button class="login100-form-btn" onclick="TryToRegister()">
+							Register
 						</button>
 					</div>
 

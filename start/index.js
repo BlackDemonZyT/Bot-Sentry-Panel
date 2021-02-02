@@ -1,14 +1,18 @@
+// Support for LocalStorage when running on Express server
+var LocalStorage = require('node-localstorage').LocalStorage;
+storage = new LocalStorage('./scratch');
+
 // Method that will take the user to the login page
 function MoveToLogin()
 {
-    localStorage.setItem('joined', 'true');
+    storage.setItem('joined', 'true');
     window.location.href = "../login/index.html";
 }
 
 // Method that will check if the user joined the app before and take him to login
 function CheckMoveToLogin()
 {
-    if(localStorage.getItem('joined'))
+    if(storage.getItem('joined'))
     {
         window.location.href = "../login/index.html";
     }
